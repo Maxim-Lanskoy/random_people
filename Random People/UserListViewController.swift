@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  UserListViewController.swift
 //  Random People
 //
 //  Created by Maxim Lanskoy on 09.10.2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class UserListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
