@@ -14,6 +14,11 @@
 		8C162D5C216D278700C4F3DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C162D5A216D278700C4F3DC /* Main.storyboard */; };
 		8C162D5E216D278700C4F3DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C162D5D216D278700C4F3DC /* Assets.xcassets */; };
 		8C162D61216D278700C4F3DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C162D5F216D278700C4F3DC /* LaunchScreen.storyboard */; };
+		8CE8B69B216D3E5700D4E370 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE8B69A216D3E5700D4E370 /* HTTPClient.swift */; };
+		8CE8B69E216D409C00D4E370 /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE8B69D216D409C00D4E370 /* NetworkActivityIndicatorManager.swift */; };
+		8CE8B6A0216D495D00D4E370 /* HTTPClient+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE8B69F216D495D00D4E370 /* HTTPClient+User.swift */; };
+		8CE8B6A3216D4B4F00D4E370 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE8B6A2216D4B4F00D4E370 /* User.swift */; };
+		8CE8B6A5216D4C5C00D4E370 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE8B6A4216D4C5C00D4E370 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		8C162D5D216D278700C4F3DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C162D60216D278700C4F3DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C162D62216D278700C4F3DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CE8B69A216D3E5700D4E370 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		8CE8B69D216D409C00D4E370 /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
+		8CE8B69F216D495D00D4E370 /* HTTPClient+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPClient+User.swift"; sourceTree = "<group>"; };
+		8CE8B6A2216D4B4F00D4E370 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8CE8B6A4216D4C5C00D4E370 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				8C162D54216D278700C4F3DC /* AppDelegate.swift */,
+				8CE8B699216D3E3E00D4E370 /* Networking */,
+				8CE8B69C216D408700D4E370 /* ThirdParty */,
+				8CE8B6A1216D4B4600D4E370 /* Model */,
 				8C162D56216D278700C4F3DC /* UserListViewController.swift */,
 				8C162D58216D278700C4F3DC /* SecondViewController.swift */,
 				8C162D5A216D278700C4F3DC /* Main.storyboard */,
@@ -80,6 +93,32 @@
 				8C162D62216D278700C4F3DC /* Info.plist */,
 			);
 			path = "Random People";
+			sourceTree = "<group>";
+		};
+		8CE8B699216D3E3E00D4E370 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8CE8B69A216D3E5700D4E370 /* HTTPClient.swift */,
+				8CE8B69F216D495D00D4E370 /* HTTPClient+User.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8CE8B69C216D408700D4E370 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				8CE8B69D216D409C00D4E370 /* NetworkActivityIndicatorManager.swift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		8CE8B6A1216D4B4600D4E370 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8CE8B6A2216D4B4F00D4E370 /* User.swift */,
+				8CE8B6A4216D4C5C00D4E370 /* Error.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F10F210234A8BE74805076C4 /* Pods */ = {
@@ -190,6 +229,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -198,6 +238,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -228,9 +269,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE8B6A5216D4C5C00D4E370 /* Error.swift in Sources */,
 				8C162D59216D278700C4F3DC /* SecondViewController.swift in Sources */,
 				8C162D55216D278700C4F3DC /* AppDelegate.swift in Sources */,
+				8CE8B69B216D3E5700D4E370 /* HTTPClient.swift in Sources */,
+				8CE8B6A0216D495D00D4E370 /* HTTPClient+User.swift in Sources */,
 				8C162D57216D278700C4F3DC /* UserListViewController.swift in Sources */,
+				8CE8B69E216D409C00D4E370 /* NetworkActivityIndicatorManager.swift in Sources */,
+				8CE8B6A3216D4B4F00D4E370 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

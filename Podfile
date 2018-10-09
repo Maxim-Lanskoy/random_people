@@ -7,6 +7,9 @@ target 'Random People' do
 
   # Pods for Random People
 
+  #UI	
+  pod 'NVActivityIndicatorView'
+
   #Work with server requests
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
