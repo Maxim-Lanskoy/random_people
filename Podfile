@@ -11,5 +11,6 @@ target 'Random People' do
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
   pod 'AlamofireImage'
+  pod 'SwiftyJSON'
 
 end
