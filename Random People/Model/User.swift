@@ -9,6 +9,7 @@
 import ObjectMapper
 
 class User: Mappable {
+    
     var firstName: String = ""
     var lastName: String = ""
     var title: String = ""
@@ -18,14 +19,15 @@ class User: Mappable {
     var dateOfRegistration: String = ""
     var dateOfBirth: String = ""
     
-    var city: String = ""
-    var street: String = ""
-    var state: String = ""
-    var postCode: String = ""
+    var city: String?
+    var street: String?
+    var state: String?
+    var postCode: Int?
     
     var userAvatar: URL?
 
     var nationality: Nationality?
+    
     private var nationalityString: String = "" {
         didSet {
             self.nationality = Nationality.init(rawValue: nationalityString.lowercased())
@@ -33,6 +35,31 @@ class User: Mappable {
     }
     
     required init?(map: Map) {
+    }
+    
+    required init(coreDataUserObject: CDUser) {
+        self.firstName = coreDataUserObject.firstName ?? ""
+        self.lastName = coreDataUserObject.lastName ?? ""
+        self.title = coreDataUserObject.title ?? ""
+        
+        self.gender = coreDataUserObject.gender ?? ""
+        self.phone = coreDataUserObject.phone ?? ""
+        self.dateOfRegistration = coreDataUserObject.dateOfRegistration ?? ""
+        self.dateOfBirth = coreDataUserObject.dateOfBirth ?? ""
+        
+        self.city = coreDataUserObject.city
+        self.street = coreDataUserObject.street
+        self.state = coreDataUserObject.state
+        self.postCode = Int(coreDataUserObject.postcode)
+        
+        self.userAvatar = URL(string: coreDataUserObject.userAvatar ?? "")
+        self.nationality = coreDataUserObject.nationality != nil ? Nationality(rawValue: coreDataUserObject.nationality!) : nil
+    }
+    
+    func getLocationString() -> String {
+        let compactArray = ["\(nationality!.rawValue.capitalized)", self.city?.capitalized, self.street,
+                            self.state, (self.postCode != nil ? "\(self.postCode!)" : nil)].flatMap { $0 }
+        return compactArray.joined(separator: ", ")
     }
     
     func mapping(map: Map) {
@@ -49,7 +76,7 @@ class User: Mappable {
         dateOfRegistration <-  map["registered.date"]
         street             <-  map["location.street"]
         postCode           <-  map["location.postcode"]
-        userAvatar         <- (map["picture.thumbnail"], URLTransform())
+        userAvatar         <- (map["picture.large"], URLTransform())
     }
 }
 

@@ -11,11 +11,9 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
+let resultsNumber = 20
 let kHTTPClientErrorCode = 1001
 let kAppInternalErrorDomain = "com.nure.lanskoi.maksym.RandomPeople"
-
-let resultsNumber = 20
-let noInfo = true
 
 typealias CompletionBlock = (_ response: Any?, _ error: Error?) -> ()
 
@@ -25,7 +23,6 @@ class HTTPClient: NSObject {
     static var lastRequest: DataRequest?
     
     static private func sendRequest(method: HTTPMethod, parameters: Parameters? = nil, completion: @escaping CompletionBlock) -> Void {
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.isNetworkActivityIndicatorEnabled = true
         
@@ -34,11 +31,15 @@ class HTTPClient: NSObject {
             self.lastRequest = nil
         }
         
-        let request = "results=\(resultsNumber)"  + "&"
-                    + "\(noInfo ? "noinfo" : "")" + "&"
-                    + "nat=\(Nationality.allCasesString.joined(separator: ","))"
-        var url: String
-        url = "\(serverURL)/?\(request)"
+        let resultsNumberParam = "results=\(resultsNumber)"
+        let nationalityParam = "nat=\(FilterOptionsHelper.shared.nationalityFilterOption ?? Nationality.allCasesString.joined(separator: ","))"
+        var genderParam: String?
+        if let gender = FilterOptionsHelper.shared.genderFilterOption, gender.count > 0 {
+            genderParam = "gender=\(gender)"
+        }
+        
+        let combinedParams = [resultsNumberParam, nationalityParam, genderParam].flatMap{$0}.joined(separator: "&")
+        let  url = "\(serverURL)?\(combinedParams)"
         
         self.lastRequest = Alamofire.request(url, method: method, parameters: nil, encoding: URLEncoding.default, headers: nil)
             .responseJSON { (response) in
